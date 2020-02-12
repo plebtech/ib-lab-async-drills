@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function doStuff() {
-    
+
     function repeat(message) {
         console.log(`${message}`);
     }
@@ -28,3 +28,49 @@ function doStuff() {
     }
     getWords("one", "two", "three", "four");
 }
+
+function done() {
+    console.log("Job's done!");
+}
+function countdown(num, callback) {
+    if (num > 1) {
+        console.log(num);
+        num--;
+        setTimeout(() => {
+            countdown(num, callback);
+        }, 1000);
+    } else if (num === 1) {
+        console.log(num);
+        callback();
+    } else {
+        console.log("error");
+    }
+}
+countdown(5, done);
+
+let lunchTime = true;
+function orderMeSomeFood() {
+    let nope = new Error('Not lunch!');
+    let myObject = {
+        lunch: 'chicken wings',
+        drink: 'heavy cream'
+    }
+    return new Promise((resolve, reject) => {
+        if (lunchTime === true) {
+            resolve(myObject);
+        } else {
+            reject(nope);
+        }
+    });
+}
+function order() {
+    orderMeSomeFood()
+        .then((value) => {
+            console.log(value);
+        }).catch((err) => {
+            console.log(err);
+        });
+}
+order();
+lunchTime = false;
+order();
