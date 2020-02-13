@@ -18,15 +18,15 @@ function doStuff() {
         console.log(w1);
         setTimeout(() => {
             console.log(w2);
+            setTimeout(() => {
+                console.log(w3);
+                setTimeout(() => {
+                    console.log(w4);
+                }, 1000);
+            }, 2000);
         }, 3000);
-        setTimeout(() => {
-            console.log(w3);
-        }, 2000);
-        setTimeout(() => {
-            console.log(w4);
-        }, 1000);
     }
-    getWords("one", "two", "three", "four");
+    getWords("instant", "three", "two", "one");
 }
 
 function done() {
